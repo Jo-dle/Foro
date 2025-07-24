@@ -1,5 +1,5 @@
 <?php
-include_once "./dbconnect.php";
+include_once "./db_connect.php";
 session_start();
 
 if($_SERVER['REQUEST_METOHD'] === 'GET' && isset($_GET ["entrar"])){
