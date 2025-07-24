@@ -6,3 +6,9 @@
 	user: adminforo
 	pass: 1234
 	db: foro
+
+## USUARIOS
+
+	Neftalí, Joel
+	correo:[nombre]@gmail.com
+	contraseña:1234
