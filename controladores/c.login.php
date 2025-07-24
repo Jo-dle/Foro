@@ -14,7 +14,12 @@ if($_SERVER['REQUEST_METOHD'] === 'GET' && isset($_GET ["entrar"])){
             $_SESSION["id"] = $row["id"];
             $_SESSION["nombre"] = $row["nombre"];
             $_SESSION["correo"] = $row["correo"];
-            header("location: index.php")
+            header("location: index.php");
+        } else {
+            $errorlogin = true;
+            echo 'Usuario no registrado';
         }
+    } catch(mysqli_sql_exception $e){
+        echo '<div class="alert alert-danger">Error ' . htmlspecialchars($e->getMessage()) . '<div>';
     }
 }
