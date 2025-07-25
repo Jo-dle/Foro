@@ -48,17 +48,18 @@ include_once "./controladores/c.login.php";
                 </div>
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Inicia sesión para comenzar</p>
-                    <form method="get">
+                    <form action="index.php" method="post">
                         <div class="input-group mb-1">
                             <div class="form-floating">
-                                <input id="loginEmail" name="correo" type="email" class="form-control" value="" placeholder="example@example.com"/>
+                                <input id="loginEmail" name="correo" type="email" class="form-control" value="<?php echo htmlspecialchars($correoGuardado);?>"placeholder="example@example.com"/>
                                 <label for="loginEmail">Email</label>
                             </div>
                             <div class="input-group-text"><span class="bi bi-envelope"></span></div>
                         </div>
                         <div class="input-group mb-1">
                             <div class="form-floating">
-                                <input id="loginPass" name="clave" type="password" class="form-control" placeholder=""/>
+                                <input id="loginPass" name="clave" type="password" class="form-control" placeholder=""
+                                value="<?php echo htmlspecialchars($claveGuardada); ?>" placeholder=""/>
                                 <label for="loginPass">Contraseña</label>
                             </div>
                             <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
@@ -66,8 +67,8 @@ include_once "./controladores/c.login.php";
                         <div class="row">
                             <div class="col-8 d-inline-flex align-items-center">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label class="form-check-label" for="flexCheckDefault"> Recuérdame </label>
+                                   <input class="form-check-input" type="checkbox" name="recordar" id="flexCheckDefault" />
+                                   <label class="form-check-label" for="flexCheckDefault"> Recuérdame </label>
                                 </div>
                             </div>
                             <div class="col-4">

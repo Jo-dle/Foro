@@ -2,24 +2,53 @@
 include_once "./db_connect.php";
 session_start();
 
-if($_SERVER['REQUEST_METOHD'] === 'GET' && isset($_GET ["entrar"])){
-    $email = sanitizar($conexion, $_REQUEST['correo']);
-    $pass = hash("sha256", sanitizar($conexion, $_REQUEST['clave']));
+// Leer cookies si existen
+$correoGuardado = $_COOKIE['correo'] ?? '';
+$claveGuardada = $_COOKIE['clave'] ?? '';
 
-    try{
-        $query = "SELECT * FROM usuarios WHERE correo='$email' and clave='$pass'";
-        $resultset = mysqli_query($conexion, $query);
-        $row = $resultset->fetch_assoc();
-        if($row){
-            $_SESSION["id"] = $row["id"];
-            $_SESSION["nombre"] = $row["nombre"];
-            $_SESSION["correo"] = $row["correo"];
-            header("location: index.php");
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['entrar'])) {
+    $correo = sanitizar($conexion, $_GET['correo']);
+    $clave = $_GET['clave'];
+    $recordar = isset($_GET['recordar']);
+
+    try {
+        // Buscar usuario en base de datos
+        $stmt = $conexion->prepare("SELECT id, nombre, correo, clave FROM usuarios WHERE correo = ?");
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        if ($resultado->num_rows === 1) {
+            $fila = $resultado->fetch_assoc();
+            $claveHash = $fila['clave'];
+
+            // Verificar contraseña
+            if (password_verify($clave, $claveHash)) {
+                // Guardar datos en sesión
+                $_SESSION['id'] = $fila['id'];
+                $_SESSION['nombre'] = $fila['nombre'];
+                $_SESSION['correo'] = $fila['correo'];
+
+                // Guardar cookies si se marcó "Recuérdame"
+                if ($recordar) {
+                    setcookie('correo', $correo, time() + (7 * 24 * 60 * 60), "/");
+                    setcookie('clave', $clave, time() + (7 * 24 * 60 * 60), "/");
+                } else {
+                    setcookie('correo', '', time() - 3600, "/");
+                    setcookie('clave', '', time() - 3600, "/");
+                }
+
+                header("Location: index.php");
+                exit();
+            } else {
+                $mensajeError = "Contraseña incorrecta.";
+            }
         } else {
-            $errorlogin = true;
-            echo 'Usuario no registrado';
+            $mensajeError = "Usuario no encontrado.";
         }
-    } catch(mysqli_sql_exception $e){
-        echo '<div class="alert alert-danger">Error ' . htmlspecialchars($e->getMessage()) . '<div>';
+
+    } catch (mysqli_sql_exception $e) {
+        echo '<div class="alert alert-danger">Error: ' . htmlspecialchars($e->getMessage()) . '</div>';
     }
 }
+?>
