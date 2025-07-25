@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.0.6">
+  <diagram name="Página-1" id="rvZdgMIWH_rjVQ-tKfIU">
+    <mxGraphModel dx="11582" dy="-436" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-8" value="&#xa;&lt;div style=&quot;color: #cccccc;background-color: #1f1f1f;font-family: Consolas, &#39;Courier New&#39;, monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;function&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;sanitizar&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;$conexion&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;$datos&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;){&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #c586c0;&quot;&gt;return&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;mysqli_real_escape_string&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;$conexion&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;,&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;htmlspecialchars&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;trim&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;strip_tags&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;$datos&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; ?? &lt;/span&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;))));&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;function&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;mostrarAlertaMensaje&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;()&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;&amp;nbsp; &amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #c586c0;&quot;&gt;if&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; (!&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;empty&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;$_GET&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&#39;mensaje&#39;&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;])) {&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;$mensaje&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; = &lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;htmlspecialchars&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;$_GET&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&#39;mensaje&#39;&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;], ENT_QUOTES, &lt;/span&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&#39;UTF-8&#39;&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;echo&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&#39;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;lt;div class=&quot;alert alert-success alert-dismissible fade show&quot; role=&quot;alert&quot;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;lt;i class=&quot;bi bi-check-circle-fill me-2&quot;&amp;gt;&amp;lt;/i&amp;gt; &#39;&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;$mensaje&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&#39;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;alert&quot; aria-label=&quot;Cerrar&quot;&amp;gt;&amp;lt;/button&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #ce9178;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &#39;&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;&amp;nbsp; &amp;nbsp; }&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&#xa;&#xa;" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="-67" y="1550" width="1388" height="1388" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-1" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="-2" width="1388" height="1388" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-2" value="Logo" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="45" y="33" width="97" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="178" y="23" width="995" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-5" value="Discusiones(preguntas)" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="178" y="23" width="136" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-6" value="Perfil" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="998" y="23" width="175" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-7" value="Home" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="510" y="23" width="286" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-10" value="" style="rounded=0;whiteSpace=wrap;html=1;direction=south;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="45" y="182" width="154" height="569" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-11" value="Buscador (preguntas)" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="62" y="218" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-12" value="Discusiones relevantes&lt;br&gt;(preguntas)" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="62" y="319" width="120" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-13" value="Ultima pregunta creada (por el usuario)" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="62" y="676" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-14" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="311" y="181" width="766" height="885" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-15" value="Tienes algun tema interesante en mente?&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="504" y="216" width="348" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-16" value="Nueva discusión&lt;br&gt;(botón)" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="618" y="276" width="120" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-17" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="372" y="369" width="651" height="659" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-18" value="Nombre de la discusion" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="400" y="420" width="120" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="n-vh6ihoBVJ99KqYdVZ4-19" value="Respuestas mejor valoradas de la discusión" style="rounded=0;whiteSpace=wrap;html=1;" parent="n-vh6ihoBVJ99KqYdVZ4-8" vertex="1">
+          <mxGeometry x="520" y="406" width="420" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EvCfy_zF7HeGbphb3BTK-3" value="Lista de amigos conectados" style="rounded=0;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="n-vh6ihoBVJ99KqYdVZ4-8">
+          <mxGeometry x="1173" y="181" width="154" height="575" as="geometry" />
+        </mxCell>
+        <mxCell id="EvCfy_zF7HeGbphb3BTK-7" value="ANUNCIO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="n-vh6ihoBVJ99KqYdVZ4-8">
+          <mxGeometry x="58" y="1118" width="1288" height="231" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
