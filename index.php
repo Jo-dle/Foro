@@ -1,18 +1,19 @@
 <?php
 include_once "./db_connect.php";
 session_start();
-session_regenerate_id(true);
+session_regenerate_id(true); // Protege contra fijación de sesión
 
-if (!isset($_REQUEST["sesion"])){
-    header("Location:login.php");
+// Verificar si el usuario está logueado
+//if (!isset($_SESSION['id'])) {
+  //  header("Location: login.php");
+   // exit;
+//}
+
+// Cerrar sesión si se solicita
+if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] === "cerrar") {
+    session_unset();
+    session_destroy(); 
+    header("Location: login.php");
+    exit;
 }
-
-if (isset($_REQUEST["sesion"]) && $_REQUEST ["sesion"] === "cerrar") {
-  session_unset();
-  session_destroy(); 
-  header("Location: login.php");
-  exit;
-  }
 ?>
-
-<a href="index.php?sesion=cerrar"  class="nav-link active btn btn-outline-danger"><i class="bi bi-door-open"></i>Cerrar Sesion</a>

@@ -7,6 +7,7 @@ $correoGuardado = $_COOKIE['correo'] ?? '';
 $claveGuardada = $_COOKIE['clave'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['entrar'])) {
+    $id = sanitizar($conexion, $_GET['id']);
     $correo = sanitizar($conexion, $_GET['correo']);
     $clave = $_GET['clave'];
     $recordar = isset($_GET['recordar']);
