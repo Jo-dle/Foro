@@ -35,7 +35,7 @@ include_once "./controladores/c.login.php";
       integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/adminlte.css" />
+    <link rel="stylesheet" href="./estilos/adminlte.css" />
     </head>
     
     <body class="login-page bg-body-secondary">
