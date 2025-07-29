@@ -1,5 +1,12 @@
 <?php 
-include_once "./controladores/c.login.php";
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include_once("./controladores/c.login.php");
+
+$correoGuardado = $correoGuardado ?? '';
+$claveGuardada = $claveGuardada ?? '';
+
 ?>
 
 <!DOCTYPE html>
@@ -48,8 +55,8 @@ include_once "./controladores/c.login.php";
                 </div>
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Inicia sesión para comenzar</p>
-                    <form method="post">
-                        <div class="input-group mb-1">
+                    <form method="get">
+                        <div class="input-group mb-1" action="login.php">
                             <div class="form-floating">
                                 <input id="loginEmail" name="correo" type="email" class="form-control" value="<?php echo htmlspecialchars($correoGuardado);?>"placeholder="example@example.com"/>
                                 <label for="loginEmail">Email</label>
@@ -65,12 +72,6 @@ include_once "./controladores/c.login.php";
                             <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
                         </div>
                         <div class="row">
-                            <div class="col-8 d-inline-flex align-items-center">
-                                <div class="form-check">
-                                   <input class="form-check-input" type="checkbox" name="recordar" id="flexCheckDefault" />
-                                   <label class="form-check-label" for="flexCheckDefault"> Recuérdame </label>
-                                </div>
-                            </div>
                             <div class="col-4">
                                 <div class="d-grid gap-2">
                                     <button type="submit" class="btn btn-primary" name="entrar">Entrar</button>

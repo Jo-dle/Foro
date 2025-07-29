@@ -15,5 +15,6 @@ if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] === "cerrar") {
     session_destroy(); 
     header("Location: login.php");
     exit;
+    
 }
 ?>
