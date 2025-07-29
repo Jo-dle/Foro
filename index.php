@@ -8,7 +8,20 @@ if (!isset($_SESSION['id'])) {
    header("Location: login.php");
    exit;
 }
+/* prueba para ver si funka
 
+if (isset($_SESSION['nombre'])) {
+    echo "Bienvenido, " . htmlspecialchars($_SESSION['nombre']);
+}
+    */
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <a href="index.php?sesion=cerrar">Cerrar sesión</a>
+<?php
 // Cerrar sesión si se solicita
 if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] === "cerrar") {
     session_unset();
@@ -18,3 +31,14 @@ if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] === "cerrar") {
     
 }
 ?>
+
+
+    <?php
+    if(isset($_REQUEST["pregunta"]) && $_REQUEST["pregunta"] === "crear"){
+        header("Location: ./controladores/crear/c.crearpregunta.php");
+    }
+    ?>
+    <a href="index.php?pregunta=crear"> Crear Pregunta</a>
+
+    </body>
+</html>
