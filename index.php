@@ -35,7 +35,7 @@ if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] === "cerrar") {
 
     <?php
     if(isset($_REQUEST["pregunta"]) && $_REQUEST["pregunta"] === "crear"){
-        header("Location: ./controladores/crear/c.crearpregunta.php");
+        header("Location: ./vistas/v.preguntas.php");
     }
     ?>
     <a href="index.php?pregunta=crear"> Crear Pregunta</a>
