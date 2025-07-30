@@ -2,10 +2,11 @@
 include_once "./db_connect.php";
 session_start();
 
-// Leer cookies si existen
-$correoGuardado = $_COOKIE['correo'] ?? '';
-$claveGuardada = $_COOKIE['clave'] ?? '';
+if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET ["entrar"])){
+    $email = sanitizar($conexion, $_REQUEST['correo']);
+    $pass = sanitizar($conexion, $_REQUEST['clave']);
 
+<<<<<<< HEAD
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['entrar'])) {
     $id = sanitizar($conexion, $_POST['id']);
     $correo = sanitizar($conexion, $_POST['correo']);
@@ -44,12 +45,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['entrar'])) {
             } else {
                 $mensajeError = "Contraseña incorrecta.";
             }
+=======
+    try{
+        $query = "SELECT * FROM usuarios WHERE correo='$email' and clave='$pass'";
+        $resultset = mysqli_query($conexion, $query);
+        $row = $resultset->fetch_assoc();
+        if($row){
+            $_SESSION["id"] = $row["id"];
+            $_SESSION["nombre"] = $row["nombre"];
+            $_SESSION["correo"] = $row["correo"];
+            header("location: index.php");
+>>>>>>> a4146ba3e93df5e18a87a27384f42fb59e5218bb
         } else {
-            $mensajeError = "Usuario no encontrado.";
+            $errorlogin = true;
+            echo 'Usuario no registrado';
         }
-
-    } catch (mysqli_sql_exception $e) {
-        echo '<div class="alert alert-danger">Error: ' . htmlspecialchars($e->getMessage()) . '</div>';
+    } catch(mysqli_sql_exception $e){
+        echo '<div class="alert alert-danger">Error ' . htmlspecialchars($e->getMessage()) . '<div>';
     }
 }
-?>
