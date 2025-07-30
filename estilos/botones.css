@@ -1,0 +1,76 @@
+/* Botón base: estilo limpio y simple */
+.boton {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 16px;
+  margin: 4px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* Hover efecto común */
+.boton:hover {
+  transform: scale(1.03);
+}
+
+/* Botón confirmar (verde) */
+.boton-confirmar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.boton-confirmar:hover {
+  background-color: #45a049;
+}
+
+/* Botón peligro (rojo) */
+.boton-peligro {
+  background-color: #f44336;
+  color: white;
+}
+
+.boton-peligro:hover {
+  background-color: #d32f2f;
+}
+
+/* Botón cerrar (gris oscuro) */
+.boton-cerrar {
+  background-color: #f53abd;
+  color: white;
+}
+
+.boton-cerrar:hover {
+  background-color: #8eff5a;
+}
+
+/* Botón info (azul claro) */
+.boton-info {
+  background-color: #2196F3;
+  color: white;
+}
+
+.boton-info:hover {
+  background-color: #1976D2;
+}
+
+/* Botón advertencia (naranja) */
+.boton-advertencia {
+  background-color: #ff9800;
+  color: white;
+}
+
+.boton-advertencia:hover {
+  background-color: #fb8c00;
+}
+
+/* Botón neutro (gris claro) */
+.boton-neutro {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.boton-neutro:hover {
+  background-color: #d5d5d5;
+}
