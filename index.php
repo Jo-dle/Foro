@@ -70,31 +70,41 @@ if (isset($_SESSION['nombre'])) {
                 <h2>Bienvenido a L.I.T</h2>
             </div>
             <div class="menu-item dropdown" id="perfil">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="perfilMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo htmlspecialchars($_SESSION['nombre']); ?>
-            </button>
-            <!--DropDown Del Perfil-->
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilMenu">
-                <li><a class="dropwdown-item" href="./vistas/v.perfil.php">Ver Perfíl</a></li><!--Arreglar vista del link-->
-                <li><a class="dropdown-item" href="index.php?sesion=cerrar">Cerrar sesión</a></li>
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="perfilMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php echo htmlspecialchars($_SESSION['nombre']); ?>
+                </button>
+                <!--DropDown Del Perfil-->
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilMenu">
+                    <li><a class="dropwdown-item" href="./vistas/v.perfil.php">Ver Perfíl</a></li><!--Arreglar vista del link-->
+                    <li><a class="dropdown-item" href="index.php?sesion=cerrar">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--Menú Lateral izquierdo-->
+        <div id="sidebar">
+            <div class="search-box">
+                <input type="text" id="buscarPregunta" class="form-control" placeholder="Buscar preguntas...">
+             </div>
+            <h5>Discusiones Más Relevantes</h5>
+            <ul class="list-group" id="listaPreguntas">
+                <!--Lista de discusiones más relevantes con vista en mariadb-->
+                <?php 
+                $query = "SELECT contenido FROM top_discusiones";
+                $stmt = $conexion->prepare($query);
+                $stmt->execute();
+                
+                $result = $stmt -> get_result();
+                while ($fila = $result->fetch_assoc()){
+                    $titulo = htmlspecialchars($fila['contenido']);
+                    echo "<li class='list-group-item'>$titulo</li>";
+                }
+                ?>
             </ul>
         </div>
-        </div> 
-        <div id="sidebar">
-    <div class="search-box">
-        <input type="text" id="buscarPregunta" class="form-control" placeholder="Buscar preguntas...">
-    </div>
-    <h5>Últimas preguntas</h5>
-    <ul class="list-group" id="listaPreguntas">
-        <li class="list-group-item"><a href="#">¿Qué es PHP?</a></li>
-        <li class="list-group-item"><a href="#">Cómo conectar a MySQL</a></li>
-        <li class="list-group-item"><a href="#">Uso de sesiones en PHP</a></li>
-        <li class="list-group-item"><a href="#">Validar formularios</a></li>
-        
-    </ul>
-</div>
+        <div id="Contenido">
 
         </div>
+
 <?php
 // Cerrar sesión si se solicita
 if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] === "cerrar") {
