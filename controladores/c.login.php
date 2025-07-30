@@ -6,11 +6,11 @@ session_start();
 $correoGuardado = $_COOKIE['correo'] ?? '';
 $claveGuardada = $_COOKIE['clave'] ?? '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['entrar'])) {
-    $id = sanitizar($conexion, $_GET['id']);
-    $correo = sanitizar($conexion, $_GET['correo']);
-    $clave = $_GET['clave'];
-    $recordar = isset($_GET['recordar']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['entrar'])) {
+    $id = sanitizar($conexion, $_POST['id']);
+    $correo = sanitizar($conexion, $_POST['correo']);
+    $clave = $_POST['clave'];
+    $recordar = isset($_POST['recordar']);
 
     try {
         // Buscar usuario en base de datos

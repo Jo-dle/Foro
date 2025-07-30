@@ -48,7 +48,7 @@ include_once "./controladores/c.login.php";
                 </div>
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Inicia sesión para comenzar</p>
-                    <form action="index.php" method="post">
+                    <form method="post">
                         <div class="input-group mb-1">
                             <div class="form-floating">
                                 <input id="loginEmail" name="correo" type="email" class="form-control" value="<?php echo htmlspecialchars($correoGuardado);?>"placeholder="example@example.com"/>
