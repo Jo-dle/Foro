@@ -8,16 +8,23 @@ if (!isset($_SESSION['id'])) {
    header("Location: login.php");
    exit;
 }
+
+$preguntaId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-<head></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Responder Pregunta</title>
+</head>
 <body>
-<form method="post" >
-    <input type="hidden" name="pregunta_id" value="<?php echo $preguntaId; ?>">
-    <label for="mensaje">Tu mensaje:</label>
+<form method="post">
+    <input type="hidden" name="id_pregunta" value="<?php echo $preguntaId; ?>">
+    
+    <label for="mensaje">Tu mensaje:</label><br>
     <textarea name="mensaje" id="mensaje" rows="4" required></textarea><br>
+    
     <button type="submit" name="publicar">Publicar</button>
 </form>
 </body>
