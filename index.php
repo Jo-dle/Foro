@@ -40,5 +40,37 @@ if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] === "cerrar") {
     ?>
     <a href="index.php?pregunta=crear"> Crear Pregunta</a>
 
+    <h2>Preguntas Publicadas</h2>
+
+<?php
+
+
+try {
+    $sql = "SELECT id, contenido FROM preguntas ORDER BY id ASC";
+    $resultado = $conexion->query($sql);
+
+    if ($resultado->num_rows > 0) {
+        while ($fila = $resultado->fetch_assoc()) {
+            echo "<div style='border:1px solid #ccc; padding:10px; margin:10px 0;'>";
+            echo "<p><strong>Pregunta #" . $fila['id'] . "</strong></p>";
+            echo "<p>" . htmlspecialchars($fila['contenido']) . "</p>";
+            
+            // Botón de enviar mensaje (redirige con el ID de la pregunta)
+            echo "<a href='./vistas/v.mensaje.php?pregunta_id=" . $fila['id'] . "' class='btn btn-sm btn-primary'>Enviar mensaje</a>";
+            
+            echo "</div>";
+        }
+    } else {
+        echo "<p>No hay preguntas publicadas aún.</p>";
+    }
+} catch (mysqli_sql_exception $e) {
+    echo "<p>Error al recuperar preguntas: " . htmlspecialchars($e->getMessage()) . "</p>";
+}
+?>
+
+
+
+
+
     </body>
 </html>
