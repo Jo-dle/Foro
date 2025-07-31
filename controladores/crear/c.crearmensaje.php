@@ -1,5 +1,5 @@
 <?php
-include_once("/var/www/html/Foro/db_connect.php");
+include_once("../db_connect.php");
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 

@@ -51,19 +51,39 @@ try {
 
     if ($resultado->num_rows > 0) {
         while ($fila = $resultado->fetch_assoc()) {
+            $preguntaId = $fila['id'];
             echo "<div style='border:1px solid #ccc; padding:10px; margin:10px 0;'>";
             echo "<p><strong>Pregunta #" . $fila['id'] . "</strong></p>";
             echo "<p>" . htmlspecialchars($fila['contenido']) . "</p>";
             
+            $stmt = $conexion->prepare("SELECT id_pregunta, contenido FROM mensajes WHERE id_pregunta = ?");
+            $stmt->bind_param("i", $preguntaId);
+            $stmt->execute();
+            $mensajes = $stmt->get_result();
+
+            if ($mensajes->num_rows > 0) {
+                echo "<div style='margin-left:20px; padding:10px; background-color:#f9f9f9;'>";
+                echo "<strong>Mensajes:</strong>";
+                while ($msg = $mensajes->fetch_assoc()) {
+                    echo "<p>- " . htmlspecialchars($msg['contenido']) . "</p>";
+                }
+                echo "</div>";
+            } else {
+                echo "<p style='margin-left:20px; color:gray;'>No hay mensajes aún.</p>";
+            }
+
             // Botón de enviar mensaje (redirige con el ID de la pregunta)
             echo "<a href='./vistas/v.mensaje.php?pregunta_id=" . $fila['id'] . "' class='btn btn-sm btn-primary'>Enviar mensaje</a>";
             
-            echo "</div>";
-        }
+          
+        }    
     } else {
         echo "<p>No hay preguntas publicadas aún.</p>";
+    } 
+        $sql = "SELECT id contenido FROM mensajes ORDER BY id ASC";
+        $resultado = $conexion->query($sql);
     }
-} catch (mysqli_sql_exception $e) {
+ catch (mysqli_sql_exception $e) {
     echo "<p>Error al recuperar preguntas: " . htmlspecialchars($e->getMessage()) . "</p>";
 }
 ?>
