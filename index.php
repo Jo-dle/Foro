@@ -56,7 +56,7 @@ try {
             echo "<p><strong>Pregunta #" . $fila['id'] . "</strong></p>";
             echo "<p>" . htmlspecialchars($fila['contenido']) . "</p>";
             
-            $stmt = $conexion->prepare("SELECT id_pregunta, contenido FROM mensajes WHERE id_pregunta = ?");
+            $stmt = $conexion->prepare("SELECT contenido, likes FROM mensajes WHERE id_pregunta = ? ORDER BY likes DESC LIMIT 1 ");
             $stmt->bind_param("i", $preguntaId);
             $stmt->execute();
             $mensajes = $stmt->get_result();
