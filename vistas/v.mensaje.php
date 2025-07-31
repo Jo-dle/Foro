@@ -1,0 +1,31 @@
+<?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include_once("../controladores/crear/c.crearmensaje.php");
+
+if (!isset($_SESSION['id'])) {
+   header("Location: login.php");
+   exit;
+}
+
+$preguntaId = isset($_GET['id']) ? intval($_GET['id']) : 0;
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Responder Pregunta</title>
+</head>
+<body>
+<form method="post">
+    <input type="hidden" name="id_pregunta" value="<?php echo $preguntaId; ?>">
+    
+    <label for="mensaje">Tu mensaje:</label><br>
+    <textarea name="mensaje" id="mensaje" rows="4" required></textarea><br>
+    
+    <button type="submit" name="publicar">Publicar</button>
+</form>
+</body>
+</html>
