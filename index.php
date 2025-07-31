@@ -48,6 +48,26 @@ if (isset($_SESSION['nombre'])) {
             top: 80px; 
             left: 20px; 
             overflow-y: auto;
+            z-index: 1000; 
+}
+
+
+        .search-box-wrapper {
+            position: relative;
+        }
+
+        #resultadosBusqueda {
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            z-index: 1050; 
+            display: none; 
         }
 
         #content {
@@ -82,9 +102,12 @@ if (isset($_SESSION['nombre'])) {
         </div>
         <!--Menú Lateral izquierdo-->
         <div id="sidebar">
-            <div class="search-box">
-                <input type="text" id="buscarPregunta" class="form-control" placeholder="Buscar preguntas...">
-             </div>
+           <div class="search-box-wrapper">
+            <input type="text" id="buscarPregunta" class="form-control" placeholder="Buscar Discusiones...">
+            <div id="resultadosBusqueda" class="list-group"></div>
+        </div>
+                <br><br>
+        
             <h5>Discusiones Más Relevantes</h5>
             <ul class="list-group" id="listaPreguntas">
                 <!--Lista de discusiones más relevantes con vista en mariadb-->
@@ -117,12 +140,48 @@ if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] === "cerrar") {
 
 
 <?php
+//redireccionamiento a preguntas
 if(isset($_REQUEST["pregunta"]) && $_REQUEST["pregunta"] === "crear"){
     header("Location: ./vistas/v.preguntas.php");
     }
 ?>
  
 <!--Scripts-->
+
+    <!--buscador de preguntas-->
+<script>
+const inputBusqueda = document.getElementById('buscarPregunta');
+const resultadosDiv = document.getElementById('resultadosBusqueda');
+
+inputBusqueda.addEventListener('input', function () {
+    const query = this.value.trim();
+
+    if (query.length === 0) {
+        resultadosDiv.innerHTML = '';
+        resultadosDiv.style.display = 'none';
+        return;
+    }
+
+    const xhr = new XMLHttpRequest();
+xhr.open('GET', './controladores/buscador.php?busqueda=' + encodeURIComponent(query), true);
+    xhr.onload = function () {
+        if (this.status === 200) {
+            resultadosDiv.innerHTML = this.responseText;
+            resultadosDiv.style.display = 'block';
+        }
+    };
+    xhr.send();
+});
+
+// Cerrar el popup si haces clic fuera
+document.addEventListener('click', function (e) {
+    if (!inputBusqueda.contains(e.target) && !resultadosDiv.contains(e.target)) {
+        resultadosDiv.style.display = 'none';
+    }
+});
+</script>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
