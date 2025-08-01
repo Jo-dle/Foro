@@ -73,7 +73,7 @@ try {
             }
 
             // Botón de enviar mensaje (redirige con el ID de la pregunta)
-            echo "<a href='./vistas/v.mensaje.php?pregunta_id=" . $fila['id'] . "' class='btn btn-sm btn-primary'>Enviar mensaje</a>";
+            echo "<a href='./vistas/v.mensaje.php?pregunta_id=" . $fila['id'] . "' class='btn btn-sm btn-primary'>Ver mensajes</a>";
             
           
         }    
