@@ -2,7 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-include_once("../controladores/crear/c.crearrespuesta.php");
+include_once("../controladores/crear/c.crearmensaje.php");
 
 if (!isset($_SESSION['id'])) {
    header("Location: login.php");
@@ -48,7 +48,11 @@ $preguntaId = isset($_GET['pregunta_id']) ? intval($_GET['pregunta_id']) : 0;
         echo "<button type='submit'> Me gusta</button>";
         echo "</form>";
     } else {
-        echo "<p>Ya le diste me gusta </p>";
+          echo "<form method='post' action='../controladores/crear/c.quitarlike.php' style='display:inline'>";
+          echo "<input type='hidden' name='id_mensaje' value='" . $mensajeId . "'>";
+          echo "<input type='hidden' name='pregunta_id' value='" . $preguntaId . "'>";
+          echo "<button type='submit'>Quitar me gusta</button>";
+          echo "</form>";
     }
 
     echo " <a href='../vistas/v.respuesta.php?mensaje_id=" . intval($mensajeId) . "' class='btn btn-sm btn-primary'>Ver respuestas</a>";
