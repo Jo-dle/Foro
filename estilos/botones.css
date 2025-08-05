@@ -27,7 +27,7 @@
 
 /* Botón peligro (rojo) */
 .boton-peligro {
-  background-color: #f44336;
+  background-color: #534e4d;
   color: white;
 }
 
@@ -37,12 +37,12 @@
 
 /* Botón cerrar (gris oscuro) */
 .boton-cerrar {
-  background-color: #f53abd;
-  color: white;
+  background-color: #fa3e3e;
+  color: rgb(255, 255, 255);
 }
 
 .boton-cerrar:hover {
-  background-color: #8eff5a;
+  background-color:#d31a1a ;
 }
 
 /* Botón info (azul claro) */
