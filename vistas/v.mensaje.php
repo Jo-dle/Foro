@@ -28,15 +28,29 @@ $preguntaId = isset($_GET['pregunta_id']) ? intval($_GET['pregunta_id']) : 0;
 
     if ($resultado->num_rows > 0) {
         while ($fila = $resultado->fetch_assoc()) {
-    $mensajeId = $fila['id'];
+            $mensajeId = $fila['id'];
+            $stmt = $conexion->prepare("SELECT contenido FROM respuestas WHERE id_mensaje = ? GROUP BY id ORDER BY id DESC LIMIT 10; ");
+            $stmt->bind_param("i", $mensajeId);
+            $stmt->execute();
+            $respuesta = $stmt->get_result();
 
+              if ($respuesta->num_rows > 0) {
+                echo "<div style='margin-left:20px; padding:10px; background-color:#f9f9f9;'>";
+                echo "<strong>Respuestas:</strong>";
+                while ($msg = $respuesta->fetch_assoc()) {
+                    echo "<p>- " . htmlspecialchars($msg['contenido']) . "</p>";
+                }
+                echo "</div>";
+            } else {
+                echo "<p style='margin-left:20px; color:gray;'>No hay mensajes aún.</p>";
+            }
     
     $likeCheck = $conexion->prepare("SELECT 1 FROM likes WHERE id_usuario = ? AND id_mensaje = ?");
     $likeCheck->bind_param("ii", $_SESSION['id'], $mensajeId);
     $likeCheck->execute();
     $yaDioLike = $likeCheck->get_result()->num_rows > 0;
     $likeCheck->close();
-
+           
     echo "<div style='margin-bottom:10px; padding:10px; border:1px solid #ccc'>";
     echo "<p>" . htmlspecialchars($fila['contenido']) . "</p>";
     echo "<p><strong>Likes:</strong> " . intval($fila['likes']) . "</p>";

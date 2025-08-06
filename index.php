@@ -80,8 +80,7 @@ try {
     } else {
         echo "<p>No hay preguntas publicadas aún.</p>";
     } 
-        $sql = "SELECT id contenido FROM mensajes ORDER BY id ASC";
-        $resultado = $conexion->query($sql);
+
     }
  catch (mysqli_sql_exception $e) {
     echo "<p>Error al recuperar preguntas: " . htmlspecialchars($e->getMessage()) . "</p>";
