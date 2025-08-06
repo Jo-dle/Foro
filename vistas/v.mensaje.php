@@ -10,6 +10,17 @@ if (!isset($_SESSION['id'])) {
 }
 
 $preguntaId = isset($_GET['pregunta_id']) ? intval($_GET['pregunta_id']) : 0;
+//Recogemos el nombre de la pregunta para imprimirla en pantalla
+$stmt = $conexion->prepare("SELECT contenido FROM preguntas WHERE id = ?");
+$stmt->bind_param("i", $preguntaId);
+$stmt->execute();
+$resultado = $stmt->get_result();
+//llamo contenido
+$preguntatitulo = "";
+if ($fila = $resultado->fetch_assoc()) {
+    $preguntatitulo = $fila['contenido'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +30,9 @@ $preguntaId = isset($_GET['pregunta_id']) ? intval($_GET['pregunta_id']) : 0;
     <title>Responder Pregunta</title>
 </head>
 <body>
+    <h1>
+    <?php print htmlspecialchars($preguntatitulo);  ?></h1>
+    
     <?php
     try {
      $stmt = $conexion->prepare("SELECT m.id, m.contenido, COUNT(l.id) AS likes FROM mensajes m LEFT JOIN likes l ON m.id = l.id_mensaje WHERE m.id_pregunta = ? GROUP BY m.id ORDER BY COUNT(l.id) DESC");

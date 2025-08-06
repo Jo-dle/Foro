@@ -144,7 +144,7 @@ if (isset($_REQUEST["pregunta"]) && $_REQUEST["pregunta"] === "crear") {
 }
 
 
-#boton-enviar-m {
+#boton-ver-m {
     margin-bottom: 30px;
 }
 
@@ -255,10 +255,10 @@ if (isset($_REQUEST["pregunta"]) && $_REQUEST["pregunta"] === "crear") {
                                  
                                 ?>
             
-                <div id="boton-enviar-m">
+                <div id="boton-ver-m">
                     <?php
-                    // Botón de enviar mensaje (redirige con el ID de la pregunta)
-                    echo "<a href='./vistas/v.mensaje.php?pregunta_id=" . $fila['id'] . "' class='btn btn-sm btn-primary'>Enviar mensaje</a>";
+                    // Botón de ver mensaje (redirige con el ID de la pregunta)
+                    echo "<a href='./vistas/v.mensaje.php?pregunta_id=" . $fila['id'] . "' class='btn btn-sm btn-primary'>Ver Todos Los Mensajes</a>";
                     ?>
                 </div>
                     <?php        
