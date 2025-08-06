@@ -298,7 +298,7 @@ if (isset($_REQUEST["pregunta"]) && $_REQUEST["pregunta"] === "crear") {
                 resultadosDiv.style.display = 'none';
                 return;
             }
-
+            
             const xhr = new XMLHttpRequest();
         xhr.open('GET', './controladores/buscador.php?busqueda=' + encodeURIComponent(query), true);
             xhr.onload = function () {
@@ -309,7 +309,6 @@ if (isset($_REQUEST["pregunta"]) && $_REQUEST["pregunta"] === "crear") {
             };
             xhr.send();
         });
-
         // Cerrar el popup si haces clic fuera
         document.addEventListener('click', function (e) {
             if (!inputBusqueda.contains(e.target) && !resultadosDiv.contains(e.target)) {
